@@ -1,0 +1,72 @@
+target=50  regression=15  tier=LAPTOP
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights:   0%|          | 1/320 [00:02<11:41,  2.20s/it]Loading weights: 100%|██████████| 320/320 [00:02<00:00, 145.19it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+  [(a) base + naive prompt/target] batch 1/13     12s elapsed  ~  140s left
+  [(a) base + naive prompt/target] batch 2/13     22s elapsed  ~  120s left
+  [(a) base + naive prompt/target] batch 3/13     32s elapsed  ~  107s left
+  [(a) base + naive prompt/target] batch 4/13     42s elapsed  ~   95s left
+  [(a) base + naive prompt/target] batch 5/13     52s elapsed  ~   84s left
+  [(a) base + naive prompt/target] batch 6/13     63s elapsed  ~   73s left
+  [(a) base + naive prompt/target] batch 7/13     73s elapsed  ~   62s left
+  [(a) base + naive prompt/target] batch 8/13     83s elapsed  ~   52s left
+  [(a) base + naive prompt/target] batch 9/13     93s elapsed  ~   41s left
+  [(a) base + naive prompt/target] batch 10/13    103s elapsed  ~   31s left
+  [(a) base + naive prompt/target] batch 11/13    112s elapsed  ~   20s left
+  [(a) base + naive prompt/target] batch 12/13    122s elapsed  ~   10s left
+  [(a) base + naive prompt/target] batch 13/13    132s elapsed  ~    0s left
+  [(a) base + naive prompt/target] done: 50 prompts in 132s
+  [(a) base + naive prompt/regression] batch 1/4      6s elapsed  ~   18s left
+  [(a) base + naive prompt/regression] batch 2/4     12s elapsed  ~   12s left
+  [(a) base + naive prompt/regression] batch 3/4     18s elapsed  ~    6s left
+  [(a) base + naive prompt/regression] batch 4/4     24s elapsed  ~    0s left
+  [(a) base + naive prompt/regression] done: 15 prompts in 24s
+(a) base + naive prompt      target=0.000  regression=0.600  format=0.000  2632ms
+  [(b) base + optimized prompt/target] batch 1/13      4s elapsed  ~   53s left
+  [(b) base + optimized prompt/target] batch 2/13      9s elapsed  ~   49s left
+  [(b) base + optimized prompt/target] batch 3/13     13s elapsed  ~   44s left
+  [(b) base + optimized prompt/target] batch 4/13     18s elapsed  ~   39s left
+  [(b) base + optimized prompt/target] batch 5/13     22s elapsed  ~   35s left
+  [(b) base + optimized prompt/target] batch 6/13     26s elapsed  ~   31s left
+  [(b) base + optimized prompt/target] batch 7/13     31s elapsed  ~   26s left
+  [(b) base + optimized prompt/target] batch 8/13     35s elapsed  ~   22s left
+  [(b) base + optimized prompt/target] batch 9/13     39s elapsed  ~   17s left
+  [(b) base + optimized prompt/target] batch 10/13     44s elapsed  ~   13s left
+  [(b) base + optimized prompt/target] batch 11/13     48s elapsed  ~    9s left
+  [(b) base + optimized prompt/target] batch 12/13     52s elapsed  ~    4s left
+  [(b) base + optimized prompt/target] batch 13/13     56s elapsed  ~    0s left
+  [(b) base + optimized prompt/target] done: 50 prompts in 56s
+  [(b) base + optimized prompt/regression] batch 1/4      6s elapsed  ~   18s left
+  [(b) base + optimized prompt/regression] batch 2/4     12s elapsed  ~   12s left
+  [(b) base + optimized prompt/regression] batch 3/4     18s elapsed  ~    6s left
+  [(b) base + optimized prompt/regression] batch 4/4     23s elapsed  ~    0s left
+  [(b) base + optimized prompt/regression] done: 15 prompts in 23s
+(b) base + optimized prompt  target=0.600  regression=0.600  format=1.000  1110ms
+{
+  "tier": "LAPTOP",
+  "model": "Qwen/Qwen3.5-2B",
+  "baseline_a": {
+    "target": 0.0,
+    "regression": 0.6,
+    "format": 0.0,
+    "latency_ms": 2631.5625833004015,
+    "n": 50,
+    "extra": {}
+  },
+  "baseline_b": {
+    "target": 0.6,
+    "regression": 0.6,
+    "format": 1.0,
+    "latency_ms": 1110.170827480033,
+    "n": 50,
+    "extra": {}
+  },
+  "optimized_prompt_sha": "719e74d3b6232053",
+  "n_target": 50,
+  "n_regression": 15,
+  "eval_limit": null,
+  "smoke_mode": false
+}
+NB2 exit=0

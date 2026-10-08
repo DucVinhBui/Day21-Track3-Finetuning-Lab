@@ -1,0 +1,102 @@
+baseline (b) target = 0.6 — đây là mốc phải vượt
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights:   0%|          | 1/320 [00:02<15:51,  2.98s/it]Loading weights: 100%|██████████| 320/320 [00:02<00:00, 106.93it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+  [ft/target] batch 1/13      4s elapsed  ~   53s left
+  [ft/target] batch 2/13      8s elapsed  ~   43s left
+  [ft/target] batch 3/13     11s elapsed  ~   37s left
+  [ft/target] batch 4/13     15s elapsed  ~   33s left
+  [ft/target] batch 5/13     18s elapsed  ~   29s left
+  [ft/target] batch 6/13     22s elapsed  ~   25s left
+  [ft/target] batch 7/13     25s elapsed  ~   21s left
+  [ft/target] batch 8/13     28s elapsed  ~   18s left
+  [ft/target] batch 9/13     32s elapsed  ~   14s left
+  [ft/target] batch 10/13     35s elapsed  ~   10s left
+  [ft/target] batch 11/13     38s elapsed  ~    7s left
+  [ft/target] batch 12/13     42s elapsed  ~    3s left
+  [ft/target] batch 13/13     45s elapsed  ~    0s left
+  [ft/target] done: 50 prompts in 45s
+  [ft/regression] batch 1/4      4s elapsed  ~   12s left
+  [ft/regression] batch 2/4      7s elapsed  ~    7s left
+  [ft/regression] batch 3/4     12s elapsed  ~    4s left
+  [ft/regression] batch 4/4     20s elapsed  ~    0s left
+  [ft/regression] done: 15 prompts in 20s
+fine-tune: {'target': 1.0, 'regression': 0.06666666666666667, 'format': 1.0, 'latency_ms': 907.5043200410437, 'n': 50, 'extra': {'valid_trace_rate': 0.0}}
+| run | target | regression | format | latency_ms | n |
+|---|---|---|---|---|---|
+| (a) base + naive prompt | 0.0 | 0.6 | 0.0 | 2631.6 | 50 |
+| (b) base + optimized prompt | 0.6 | 0.6 | 1.0 | 1110.2 | 50 |
+| (c) LoRA fine-tune | 1.0 | 0.0667 | 1.0 | 907.5 | 50 |
+FAILED
+ - general capability regressed by 0.533 (tolerance 0.020). See deck §6.3 — add 1-5% replay data.
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights:   0%|          | 1/320 [00:01<06:13,  1.17s/it]Loading weights:  95%|█████████▌| 305/320 [00:01<00:00, 329.65it/s]Loading weights: 100%|██████████| 320/320 [00:01<00:00, 246.84it/s]
+  [attn_only/target] batch 1/13      3s elapsed  ~   39s left
+  [attn_only/target] batch 2/13      6s elapsed  ~   34s left
+  [attn_only/target] batch 3/13      9s elapsed  ~   30s left
+  [attn_only/target] batch 4/13     12s elapsed  ~   27s left
+  [attn_only/target] batch 5/13     15s elapsed  ~   24s left
+  [attn_only/target] batch 6/13     18s elapsed  ~   21s left
+  [attn_only/target] batch 7/13     21s elapsed  ~   18s left
+  [attn_only/target] batch 8/13     24s elapsed  ~   15s left
+  [attn_only/target] batch 9/13     26s elapsed  ~   12s left
+  [attn_only/target] batch 10/13     29s elapsed  ~    9s left
+  [attn_only/target] batch 11/13     32s elapsed  ~    6s left
+  [attn_only/target] batch 12/13     35s elapsed  ~    3s left
+  [attn_only/target] batch 13/13     38s elapsed  ~    0s left
+  [attn_only/target] done: 50 prompts in 38s
+attn_only: target=0.975  format=1.000
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights:   0%|          | 1/320 [00:01<07:01,  1.32s/it]Loading weights: 100%|██████████| 320/320 [00:01<00:00, 234.65it/s]
+  [wrong_lr/target] batch 1/13      4s elapsed  ~   43s left
+  [wrong_lr/target] batch 2/13      7s elapsed  ~   37s left
+  [wrong_lr/target] batch 3/13     10s elapsed  ~   34s left
+  [wrong_lr/target] batch 4/13     13s elapsed  ~   30s left
+  [wrong_lr/target] batch 5/13     17s elapsed  ~   28s left
+  [wrong_lr/target] batch 6/13     21s elapsed  ~   24s left
+  [wrong_lr/target] batch 7/13     24s elapsed  ~   21s left
+  [wrong_lr/target] batch 8/13     28s elapsed  ~   17s left
+  [wrong_lr/target] batch 9/13     31s elapsed  ~   14s left
+  [wrong_lr/target] batch 10/13     34s elapsed  ~   10s left
+  [wrong_lr/target] batch 11/13     37s elapsed  ~    7s left
+  [wrong_lr/target] batch 12/13     41s elapsed  ~    3s left
+  [wrong_lr/target] batch 13/13     44s elapsed  ~    0s left
+  [wrong_lr/target] done: 50 prompts in 44s
+wrong_lr: target=0.420  format=0.995
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights:   0%|          | 1/320 [00:00<00:40,  7.80it/s]Loading weights:   2%|▏         | 6/320 [00:02<02:02,  2.56it/s]Loading weights:   6%|▋         | 20/320 [00:02<00:27, 10.85it/s]Loading weights:  12%|█▎        | 40/320 [00:02<00:10, 25.66it/s]Loading weights:  19%|█▉        | 61/320 [00:02<00:05, 43.99it/s]Loading weights:  25%|██▌       | 80/320 [00:02<00:03, 61.76it/s]Loading weights:  31%|███       | 99/320 [00:02<00:02, 80.72it/s]Loading weights:  41%|████      | 131/320 [00:02<00:01, 122.60it/s]Loading weights:  48%|████▊     | 153/320 [00:03<00:01, 133.85it/s]Loading weights:  57%|█████▊    | 184/320 [00:03<00:00, 170.42it/s]Loading weights:  65%|██████▌   | 208/320 [00:03<00:00, 173.27it/s]Loading weights:  74%|███████▍  | 238/320 [00:03<00:00, 200.89it/s]Loading weights:  82%|████████▏ | 262/320 [00:03<00:00, 202.61it/s]Loading weights:  91%|█████████ | 291/320 [00:03<00:00, 222.79it/s]Loading weights:  99%|█████████▉| 316/320 [00:03<00:00, 207.33it/s]Loading weights: 100%|██████████| 320/320 [00:03<00:00, 85.66it/s] 
+  [qlora/target] batch 1/13      7s elapsed  ~   87s left
+  [qlora/target] batch 2/13     13s elapsed  ~   72s left
+  [qlora/target] batch 3/13     19s elapsed  ~   64s left
+  [qlora/target] batch 4/13     25s elapsed  ~   56s left
+  [qlora/target] batch 5/13     31s elapsed  ~   49s left
+  [qlora/target] batch 6/13     37s elapsed  ~   43s left
+  [qlora/target] batch 7/13     42s elapsed  ~   36s left
+  [qlora/target] batch 8/13     48s elapsed  ~   30s left
+  [qlora/target] batch 9/13     53s elapsed  ~   24s left
+  [qlora/target] batch 10/13     59s elapsed  ~   18s left
+  [qlora/target] batch 11/13     65s elapsed  ~   12s left
+  [qlora/target] batch 12/13     70s elapsed  ~    6s left
+  [qlora/target] batch 13/13     76s elapsed  ~    0s left
+  [qlora/target] done: 50 prompts in 76s
+qlora: target=0.990  format=1.000
+
+| run | target | format | latency_ms | n |
+|---|---|---|---|---|
+| correct | 1.0 | 1.0 | 907.5 | 50 |
+| attn_only | 0.975 | 1.0 | 761.5 | 50 |
+| wrong_lr | 0.42 | 0.995 | 871.1 | 50 |
+| qlora | 0.99 | 1.0 | 1513.5 | 50 |
+--- 3 ca TỆ NHẤT (bắt buộc đưa vào report) ---
+| i | ticket | ft_score | ft_pred |
+|---|---|---|---|
+| 0 | Cho mình hỏi, mình đặt chuột không dây mã đơn VN232232. Cho tôi trả lạ | 1.0 | {"intent": "doi_tra", "urgency": "cao", "product": "chuột không dây", "sentiment": "tich_c |
+| 1 | Shop ơi, mình đặt ốp lưng điện thoại mã đơn VN812931. Hoàn tiền. Sớm n | 1.0 | {"intent": "hoan_tien", "urgency": "trung_binh", "product": "ốp lưng điện thoại", "sentime |
+| 2 | Xin chào, mình đặt đèn bàn LED mã đơn VN880807. Hoàn tiền. Quá hạn rồi | 1.0 | {"intent": "hoan_tien", "urgency": "cao", "product": "đèn bàn LED", "sentiment": "tich_cuc |
+
+--- 3 ca TỐT NHẤT ---
+| i | ticket | ft_score | ft_pred |
+|---|---|---|---|
+| 47 | Cho mình hỏi, mình đặt ốp lưng điện thoại mã đơn DH936478. Shipper khô | 1.0 | {"intent": "van_chuyen", "urgency": "thap", "product": "ốp lưng điện thoại", "sentiment":  |
+| 48 | Alo shop, mình đặt ốp lưng điện thoại mã đơn DH734695. Giá bao nhiêu.  | 1.0 | {"intent": "hoi_thong_tin", "urgency": "trung_binh", "product": "ốp lưng điện thoại", "sen |
+| 49 | Chào shop, mình đặt ốp lưng điện thoại mã đơn VN833689. Sai màu. Sớm n | 1.0 | {"intent": "san_pham_loi", "urgency": "trung_binh", "product": "ốp lưng điện thoại", "sent |
+NB5 exit=0

@@ -25,6 +25,8 @@ def free_memory() -> None:
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
             torch.cuda.reset_peak_memory_stats()
+        elif torch.backends.mps.is_available():
+            torch.mps.empty_cache()
     except ImportError:      # pragma: no cover
         pass
 
@@ -34,6 +36,11 @@ def peak_vram_gb() -> float | None:
         import torch
         if torch.cuda.is_available():
             return torch.cuda.max_memory_allocated() / 1024 ** 3
+        if torch.backends.mps.is_available():
+            # MPS has no peak counter. The caching allocator keeps every block it has
+            # grabbed until empty_cache(), which free_memory() only calls BETWEEN runs —
+            # so the pool size read at the end of a run is its high-water mark.
+            return torch.mps.driver_allocated_memory() / 1024 ** 3
     except ImportError:      # pragma: no cover
         pass
     return None
@@ -61,6 +68,18 @@ def load_base(tier: Tier, load_in_4bit: bool = False):
             bnb_4bit_use_double_quant=True,
             bnb_4bit_compute_dtype=device.torch_dtype(),
         )
+    if device.describe()["device"] == "mps":
+        # device_map="auto" (or "mps") straight onto MPS hangs at "Loading weights 0/320"
+        # on macOS 27 + torch 2.14 (measured 2026-10-07). Loading on CPU and moving the
+        # whole model takes ~6 s for Qwen3.5-2B. The 4-bit path is the exception:
+        # bitsandbytes >= 0.50 quantizes onto device_map="mps" without hanging, and a
+        # quantized model cannot be moved with .to() afterwards.
+        if load_in_4bit:
+            kwargs["device_map"] = "mps"
+            return AutoModelForCausalLM.from_pretrained(tier.model_id, **kwargs), tok
+        kwargs["device_map"] = "cpu"
+        model = AutoModelForCausalLM.from_pretrained(tier.model_id, **kwargs).to("mps")
+        return model, tok
     model = AutoModelForCausalLM.from_pretrained(tier.model_id, **kwargs)
     return model, tok
 

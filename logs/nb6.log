@@ -1,0 +1,52 @@
+scoring merge check on 50 target items
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights:   0%|          | 1/320 [00:02<15:44,  2.96s/it]Loading weights: 100%|██████████| 320/320 [00:02<00:00, 107.77it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+  [generate] batch 1/13      4s elapsed  ~   48s left
+  [generate] batch 2/13      8s elapsed  ~   42s left
+  [generate] batch 3/13     11s elapsed  ~   38s left
+  [generate] batch 4/13     15s elapsed  ~   33s left
+  [generate] batch 5/13     18s elapsed  ~   30s left
+  [generate] batch 6/13     22s elapsed  ~   26s left
+  [generate] batch 7/13     26s elapsed  ~   22s left
+  [generate] batch 8/13     29s elapsed  ~   18s left
+  [generate] batch 9/13     33s elapsed  ~   15s left
+  [generate] batch 10/13     37s elapsed  ~   11s left
+  [generate] batch 11/13     40s elapsed  ~    7s left
+  [generate] batch 12/13     44s elapsed  ~    4s left
+  [generate] batch 13/13     47s elapsed  ~    0s left
+  [generate] done: 50 prompts in 47s
+trước merge: 1.0000
+  [generate] batch 1/13      3s elapsed  ~   38s left
+  [generate] batch 2/13      6s elapsed  ~   34s left
+  [generate] batch 3/13      9s elapsed  ~   30s left
+  [generate] batch 4/13     12s elapsed  ~   27s left
+  [generate] batch 5/13     15s elapsed  ~   24s left
+  [generate] batch 6/13     18s elapsed  ~   21s left
+  [generate] batch 7/13     20s elapsed  ~   18s left
+  [generate] batch 8/13     23s elapsed  ~   15s left
+  [generate] batch 9/13     26s elapsed  ~   12s left
+  [generate] batch 10/13     29s elapsed  ~    9s left
+  [generate] batch 11/13     32s elapsed  ~    6s left
+  [generate] batch 12/13     35s elapsed  ~    3s left
+  [generate] batch 13/13     37s elapsed  ~    0s left
+  [generate] done: 50 prompts in 37s
+sau merge:   1.0000   (Δ +0.0000)
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:06<00:00,  6.58s/it]Writing model shards: 100%|██████████| 1/1 [00:06<00:00,  6.58s/it]
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights:   0%|          | 1/320 [00:09<48:23,  9.10s/it]Loading weights: 100%|██████████| 320/320 [00:09<00:00, 35.12it/s]
+adapter đang nạp: ['correct', 'attn_only', 'qlora']
+  [generate] batch 1/1      2s elapsed  ~    0s left
+  [generate] done: 1 prompts in 2s
+
+[correct] -> {"intent": "doi_tra", "urgency": "cao", "product": "chuột không dây", "sentiment": "tich_cuc"}
+  [generate] batch 1/1      2s elapsed  ~    0s left
+  [generate] done: 1 prompts in 2s
+
+[attn_only] -> {"intent": "doi_tra", "urgency": "cao", "product": "chuột không dây", "sentiment": "tich_cuc"}
+  [generate] batch 1/1      2s elapsed  ~    0s left
+  [generate] done: 1 prompts in 2s
+
+[qlora] -> {"intent": "doi_tra", "urgency": "cao", "product": "chuột không dây", "sentiment": "tich_cuc"}
+NB6 exit=0

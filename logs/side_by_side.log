@@ -1,0 +1,59 @@
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights:   0%|          | 1/320 [00:00<01:38,  3.22it/s]Loading weights:  46%|████▌     | 146/320 [00:00<00:00, 430.86it/s]Loading weights:  68%|██████▊   | 217/320 [00:00<00:00, 317.54it/s]Loading weights:  83%|████████▎ | 266/320 [00:00<00:00, 276.72it/s]Loading weights:  95%|█████████▌| 305/320 [00:01<00:00, 281.12it/s]Loading weights: 100%|██████████| 320/320 [00:01<00:00, 282.37it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+  [(b)/target] batch 1/13      5s elapsed  ~   58s left
+  [(b)/target] batch 2/13      9s elapsed  ~   51s left
+  [(b)/target] batch 3/13     14s elapsed  ~   46s left
+  [(b)/target] batch 4/13     18s elapsed  ~   40s left
+  [(b)/target] batch 5/13     22s elapsed  ~   36s left
+  [(b)/target] batch 6/13     27s elapsed  ~   31s left
+  [(b)/target] batch 7/13     31s elapsed  ~   27s left
+  [(b)/target] batch 8/13     35s elapsed  ~   22s left
+  [(b)/target] batch 9/13     40s elapsed  ~   18s left
+  [(b)/target] batch 10/13     44s elapsed  ~   13s left
+  [(b)/target] batch 11/13     49s elapsed  ~    9s left
+  [(b)/target] batch 12/13     53s elapsed  ~    4s left
+  [(b)/target] batch 13/13     56s elapsed  ~    0s left
+  [(b)/target] done: 50 prompts in 56s
+  [(b)/regression] batch 1/4      6s elapsed  ~   19s left
+  [(b)/regression] batch 2/4     12s elapsed  ~   12s left
+  [(b)/regression] batch 3/4     19s elapsed  ~    6s left
+  [(b)/regression] batch 4/4     25s elapsed  ~    0s left
+  [(b)/regression] done: 15 prompts in 25s
+  [ft/target] batch 1/13      4s elapsed  ~   42s left
+  [ft/target] batch 2/13      7s elapsed  ~   39s left
+  [ft/target] batch 3/13     11s elapsed  ~   36s left
+  [ft/target] batch 4/13     14s elapsed  ~   32s left
+  [ft/target] batch 5/13     18s elapsed  ~   28s left
+  [ft/target] batch 6/13     21s elapsed  ~   25s left
+  [ft/target] batch 7/13     25s elapsed  ~   21s left
+  [ft/target] batch 8/13     28s elapsed  ~   17s left
+  [ft/target] batch 9/13     31s elapsed  ~   14s left
+  [ft/target] batch 10/13     35s elapsed  ~   10s left
+  [ft/target] batch 11/13     38s elapsed  ~    7s left
+  [ft/target] batch 12/13     41s elapsed  ~    3s left
+  [ft/target] batch 13/13     45s elapsed  ~    0s left
+  [ft/target] done: 50 prompts in 45s
+  [ft/regression] batch 1/4      4s elapsed  ~   11s left
+  [ft/regression] batch 2/4      7s elapsed  ~    7s left
+  [ft/regression] batch 3/4     12s elapsed  ~    4s left
+  [ft/regression] batch 4/4     19s elapsed  ~    0s left
+  [ft/regression] done: 15 prompts in 19s
+{
+  "b_target": 0.6,
+  "ft_target": 1.0,
+  "b_field_acc": {
+    "intent": 0.58,
+    "urgency": 0.56,
+    "product": 0.94,
+    "sentiment": 0.32
+  },
+  "b_regression": 0.6,
+  "ft_regression": 0.0667,
+  "target_ft_wins": 47,
+  "target_ft_losses": 0,
+  "regression_ft_wins": 0,
+  "regression_ft_losses": 10
+}
